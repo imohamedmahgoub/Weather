@@ -13,7 +13,7 @@ struct YourWeather: View {
         ZStack{
             SetupBackgroundImage(isDay: viewModel.weatherData.first?.current.isDay)
             VStack{
-                SetupWeatherAndCity(cityName: viewModel.weatherData.first?.location.name, currentTemp: viewModel.weatherData.first?.current.tempC, highestTemp: viewModel.weatherData.first?.forecast.forecastday.first?.day.maxtempC, lowestTemp: viewModel.weatherData.first?.forecast.forecastday.first?.day.mintempC, state: viewModel.weatherData.first?.current.condition.text.rawValue, icon: viewModel.weatherData.first?.current.condition.icon.rawValue, time: viewModel.weatherData.first?.location.localtime)
+                SetupWeatherAndCity(cityName: viewModel.weatherData.first?.location.name, currentTemp: viewModel.weatherData.first?.current.tempC, highestTemp: viewModel.weatherData.first?.forecast.forecastday.first?.day.maxtempC, lowestTemp: viewModel.weatherData.first?.forecast.forecastday.first?.day.mintempC, state: viewModel.weatherData.first?.current.condition.text, icon: viewModel.weatherData.first?.current.condition.icon, time: viewModel.weatherData.first?.location.localtime)
                 
                 if let forcast = viewModel.weatherData.first?.forecast {
                     SetupForecastList(forecast: forcast)
@@ -98,7 +98,7 @@ struct SetupForecastList : View {
                             .bold()
                         Spacer()
                         Spacer()
-                        if let iconURL = URL(string: "https:" + day.day.condition.icon.rawValue) {
+                        if let iconURL = URL(string: "https:" + day.day.condition.icon) {
                             AsyncImage(url: iconURL)
                                 .frame(width: 32, height: 32)
                                 .padding(.trailing,100)

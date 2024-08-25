@@ -16,7 +16,7 @@ struct ForecastDetailView: View {
                 Text(formatTime(hour.time ?? ""))
                     .bold()
                 Spacer()
-                if let iconURL = URL(string: "https:" + (hour.condition.icon.rawValue)) {
+                if let iconURL = URL(string: "https:" + (hour.condition.icon)) {
                     AsyncImage(url: iconURL)
                         .frame(width: 32, height: 32)
                 }

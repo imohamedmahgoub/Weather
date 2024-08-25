@@ -80,22 +80,9 @@ struct Current: Codable {
 
 // MARK: - Condition
 struct Condition: Codable {
-    let text: Texts
-    let icon: Icon
+    let text: String
+    let icon: String
     let code: Int
-}
-
-enum Icon: String, Codable {
-    case cdnWeatherapiCOMWeather64X64Day113PNG = "//cdn.weatherapi.com/weather/64x64/day/113.png"
-    case cdnWeatherapiCOMWeather64X64Day116PNG = "//cdn.weatherapi.com/weather/64x64/day/116.png"
-    case cdnWeatherapiCOMWeather64X64Night113PNG = "//cdn.weatherapi.com/weather/64x64/night/113.png"
-}
-
-enum Texts: String, Codable {
-    case clear = "Clear"
-    case partlyCloudy = "Partly Cloudy "
-    case sunny = "Sunny"
-    case textClear = "Clear "
 }
 
 // MARK: - Forecast
