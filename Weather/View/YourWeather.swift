@@ -114,18 +114,15 @@ struct SetupForecastList : View {
                     .padding(.trailing,100)
                     .padding(.trailing,50)
                     .cornerRadius(10)
-                    .background(Color.clear)
                 }
                 .listRowBackground(Color.clear)
             }
             .listStyle(PlainListStyle())
             .padding(.leading,30)
-            .background(Color.clear)
             .scrollContentBackground(.hidden)
             .scrollDisabled(true)
         }
             .padding(.top,100)
-            .background(Color.clear)
     }
     private func getDayName(from dateString: String) -> String {
         let dateFormatter = DateFormatter()
