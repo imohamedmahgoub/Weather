@@ -25,6 +25,7 @@ struct ForecastDetailView: View {
                     .bold()
             }
         }
+        .background(Color.cyan)
         .navigationTitle("Weather per hour")
     }
 

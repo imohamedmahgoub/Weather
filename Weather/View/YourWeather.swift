@@ -38,7 +38,7 @@ struct SetupBackgroundImage : View{
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
         }else{
-            Image("night3", bundle: nil)
+            Image("night", bundle: nil)
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
         }
@@ -102,7 +102,6 @@ struct SetupForecastList : View {
                         }
                         Spacer()
                         Text("\(day.day.mintempC, specifier: "%.1f")° - \(day.day.maxtempC, specifier: "%.1f")°")
-                            
                             .bold()
                     }
                 }
@@ -114,7 +113,7 @@ struct SetupForecastList : View {
         }
         .padding(.trailing,200)
         .padding(.leading,200)
-        .padding(.top,50)
+        .padding(.top,90)
     }
     private func getDayName(from dateString: String) -> String {
         let dateFormatter = DateFormatter()
@@ -155,7 +154,7 @@ struct SetupWeatherDetails : View{
                 WeatherDetailItem(title: "PRESSURE", value: "\(pressure ?? 0) mb")
             }
         }
-        .padding(.bottom,300)
+        .padding(.bottom,320)
     }
 }
 
