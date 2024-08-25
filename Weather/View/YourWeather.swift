@@ -21,6 +21,7 @@ struct YourWeather: View {
                 }
                 SetupWeatherDetails(visibility: viewModel.weatherData.first?.current.visKM, humidity: viewModel.weatherData.first?.current.humidity, feelsLike: viewModel.weatherData.first?.current.feelslikeC, pressure: viewModel.weatherData.first?.current.pressureMB)
             }
+            .padding(.top,300)
             .foregroundColor(viewModel.weatherData.first?.current.isDay != 0 ? .black : .white)
             .onAppear {
                 viewModel.fetchWeatherData()
@@ -75,8 +76,6 @@ struct SetupWeatherAndCity : View {
                     .frame(width: 20,height: 20)
             }
         }
-        .padding(.top,250)
-        .padding(.top,50)
     }
 }
 
@@ -84,45 +83,38 @@ struct SetupForecastList : View {
     let forecast: Forecast
     
     var body: some View {
-        VStack() {
-            Text("3 DAY FORECAST")
+        VStack(alignment: .leading) {
+            Text("3-DAY FORECAST")
                 .font(.headline)
-                .padding(.trailing, 150)
+                .padding(.leading,20)
             Divider().frame(width: 300).background(Color(.white))
 
             List(forecast.forecastday, id: \.date) { day in
                 NavigationLink(destination: ForecastDetailView(hourlyForecast: day.hour)) {
                     HStack {
                         Text(getDayName(from: day.date))
-                            .padding(.leading,80)
                             .bold()
                         Spacer()
                         Spacer()
                         if let iconURL = URL(string: "https:" + day.day.condition.icon) {
                             AsyncImage(url: iconURL)
                                 .frame(width: 32, height: 32)
-                                .padding(.trailing,100)
                         }
                         Spacer()
                         Text("\(day.day.mintempC, specifier: "%.1f")° - \(day.day.maxtempC, specifier: "%.1f")°")
                             
                             .bold()
-                            .padding(.leading,-50)
                     }
-                    .padding(.leading,20)
-                    .padding(.leading,40)
-                    .padding(.trailing,100)
-                    .padding(.trailing,50)
-                    .cornerRadius(10)
                 }
                 .listRowBackground(Color.clear)
             }
             .listStyle(PlainListStyle())
-            .padding(.leading,30)
             .scrollContentBackground(.hidden)
             .scrollDisabled(true)
         }
-            .padding(.top,100)
+        .padding(.trailing,200)
+        .padding(.leading,200)
+        .padding(.top,50)
     }
     private func getDayName(from dateString: String) -> String {
         let dateFormatter = DateFormatter()
@@ -163,8 +155,7 @@ struct SetupWeatherDetails : View{
                 WeatherDetailItem(title: "PRESSURE", value: "\(pressure ?? 0) mb")
             }
         }
-        .padding(.bottom,200)
-        .padding(.bottom,100)
+        .padding(.bottom,300)
     }
 }
 
